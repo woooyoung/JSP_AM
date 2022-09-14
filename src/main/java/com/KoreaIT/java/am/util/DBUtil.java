@@ -14,17 +14,7 @@ import java.util.Map;
 
 import com.KoreaIT.java.am.exception.SQLErrorException;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 public class DBUtil {
-	private HttpServletRequest req;
-	private HttpServletResponse resp;
-
-	public DBUtil(HttpServletRequest req, HttpServletResponse resp) {
-		this.req = req;
-		this.resp = resp;
-	}
 
 	public static Map<String, Object> selectRow(Connection dbConn, String sql) {
 		List<Map<String, Object>> rows = selectRows(dbConn, sql);
