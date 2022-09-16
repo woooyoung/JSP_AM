@@ -49,4 +49,24 @@
     <servlet-name>MainPageServlet</servlet-name>
     <url-pattern>/MainPageServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>asdfasdf</display-name>
+    <servlet-name>asdfasdf</servlet-name>
+    <servlet-class>com.KoreaIT.java.am.servlet.asdfasdf</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>asdfasdf</servlet-name>
+    <url-pattern>/asdfasdf</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>asd</display-name>
+    <servlet-name>asd</servlet-name>
+    <servlet-class>com.KoreaIT.java.am.servlet.asd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>asd</servlet-name>
+    <url-pattern>/asd</url-pattern>
+  </servlet-mapping>
 </web-app>
