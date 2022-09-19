@@ -19,6 +19,12 @@ title = CONCAT('제목__', RAND()),
 
 SELECT * FROM article;
 
+SELECT * FROM article ORDER BY id DESC;
+
+-- INSERT INTO article (regDate, title, `body`)
+-- SELECT NOW(), CONCAT('제목_', RAND()), CONCAT('내용_', RAND())
+-- FROM article;
+
 -- INSERT INTO article 
 -- SET regDate = NOW(),
 -- title = '제목1',
@@ -39,8 +45,6 @@ SELECT * FROM article;
 -- title = '제목4',
 -- `body` = '내용4';
 
-
-
-SELECT * FROM article ORDER BY id DESC;
+-- SELECT * FROM article ORDER BY id DESC LIMIT 0, 10;
 
 # articleRows.get(0).get("title")
