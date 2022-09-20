@@ -9,17 +9,15 @@
 <body>
 	<h1>회원가입</h1>
 
-	<!-- 	<a href="https://www.naver.com" onclick="if( confirm('진짜 이동할래????') == false ) return false;">naver</a> -->
-
 	<script>
 		var JoinForm__submitDone = false;
 
 		function JoinForm__submit(form) {
-			if (JoinForm__submitDone){
+			if (JoinForm__submitDone) {
 				alert('처리중 입니다');
 				return;
 			}
-			
+
 			form.loginId.value = form.loginId.value.trim();
 
 			if (form.loginId.value.length == 0) {

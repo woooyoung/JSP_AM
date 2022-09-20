@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import com.KoreaIT.java.am.config.Config;
+import com.KoreaIT.java.am.exception.SQLErrorException;
 import com.KoreaIT.java.am.util.DBUtil;
 import com.KoreaIT.java.am.util.SecSql;
 
@@ -45,7 +46,19 @@ public class MemberDoJoinServlet extends HttpServlet {
 			String loginPw = request.getParameter("loginPw");
 			String name = request.getParameter("name");
 
-			SecSql sql = SecSql.from("INSERT INTO `member`");
+			SecSql sql = SecSql.from("SELECT COUNT(*) AS cnt");
+			sql.append("FROM `member`");
+			sql.append("WHERE loginId = ? ", loginId);
+
+			boolean isJoinAvailableLoginId = DBUtil.selectRowIntValue(conn, sql) == 0;
+
+			if (isJoinAvailableLoginId == false) {
+				response.getWriter().append(String
+						.format("<script>alert('%s는 이미 사용중인 아이디입니다'); location.replace('../home/main');</script>", loginId));
+				return;
+			}
+
+			sql = SecSql.from("INSERT INTO `member`");
 			sql.append("SET regDate = NOW()");
 			sql.append(", loginId = ?", loginId);
 			sql.append(", loginPw = ?", loginPw);
@@ -53,11 +66,13 @@ public class MemberDoJoinServlet extends HttpServlet {
 
 			int id = DBUtil.insert(conn, sql);
 
-			response.getWriter()
-					.append(String.format("<script>alert('%d번 회원이 가입 되었습니다.'); location.replace('../home/main');</script>", id));
+			response.getWriter().append(String
+					.format("<script>alert('%d번 회원이 가입 되었습니다.'); location.replace('../home/main');</script>", id));
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (SQLErrorException e) {
+			e.getOrigin().printStackTrace();
 		} finally {
 			try {
 				if (conn != null && !conn.isClosed()) {
