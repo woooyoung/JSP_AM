@@ -2,7 +2,8 @@
 <%@ page import="java.util.Map"%>
 <%@ page import="java.time.LocalDateTime"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+%>
 <%
 List<Map<String, Object>> articleRows = (List<Map<String, Object>>) request.getAttribute("articleRows");
 int cPage = (int) request.getAttribute("page");
@@ -16,7 +17,7 @@ int totalPage = (int) request.getAttribute("totalPage");
 </head>
 <body>
 	<h1>게시물 리스트</h1>
-
+	<%@ include file="../part/topBar.jspf"%>
 	<div>
 		<a href="write">글쓰기</a>
 	</div>
